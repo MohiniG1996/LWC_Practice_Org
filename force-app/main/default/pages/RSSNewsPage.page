@@ -1,0 +1,166 @@
+<!--
+    @Author      : Mohammad Usman
+    @version     : 1.0
+    @Description : Yahoo News Integration Using RSS feed with Salesforce.
+-->
+<apex:page standardController="Account" showHeader="false" sidebar="false" extensions="RSSNewsReader">
+<style type="text/css">
+    body {
+    font: 13px/1.231 arial,helvetica,clean,sans-serif;
+    }
+
+    #results .yschttl, #yschiy .yschttl {
+    font-size: 123.1%;
+    }
+
+    #web h3 {
+    font-weight: normal;
+    }
+
+    #results .res {
+    margin-bottom: 17px;
+    }
+
+    .res {
+    position: relative;
+    }
+
+    #web ol li a.yschttl:link, #web li .active a:link {
+    color: #0000DE;
+    }
+
+    li {
+    list-style: none;
+    }
+
+    #web .res .url {
+    color: #A0A0A0;
+    }
+
+    #web .url, .yschurl {
+    color: green;
+    font-weight: bold;
+    }
+
+    h1 {
+        border-bottom: 2px solid threedlightshadow;
+        font-size: 160%;
+        margin: 0 0 0.2em;
+    }
+
+
+    #feedSubtitleText {
+        color: threeddarkshadow;
+        font-size: 110%;
+        font-weight: normal;
+        margin: 0 0 0.6em;
+    }
+
+    .msg {
+    background: #FEFBDD;
+    margin-left: 128px;
+    margin-right: 5px;
+    padding: 9px;
+    word-wrap: break-word;
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding-left: 11px;
+    }
+    #left-panel ul{list-syle:none}
+    #left-panel ul li{padding:2px; margin:0;list-style:none;display:block;clear:left}
+    #logo {
+    height: 37px;
+    left: -2px;
+    margin-top: 0px;
+    position: absolute;
+    top: 1px;
+    width: 168px;
+    background-image: url(http://l.yimg.com/pv/i/all/vertical/news/us_srp_metro_news_201301281307.png);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    }
+    .listHeading{
+    color: #949FA6;
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0 0 3px 8px;
+        text-transform: uppercase;
+    }
+    .listItems{
+        margin: 0;
+        padding: 5px 0;    
+    }
+    .listItems a{
+        color: #1A4B8E;
+        text-decoration: none;
+        white-space: nowrap;    
+    }
+
+    #anyTime{
+        color:{!IF($CurrentPage.parameters.age == '','black !important','#1A4B8E')};
+    }
+    #d1{
+        color:{!IF($CurrentPage.parameters.age == '1d','black !important','#1A4B8E')};
+    }
+    #h1{
+        color:{!IF($CurrentPage.parameters.age == '1h','black !important','#1A4B8E')};
+    }
+    #h1{
+        color:{!IF($CurrentPage.parameters.age == '1w','black !important','#1A4B8E')};
+    }
+</style>
+<apex:form id="yahooFormId">
+<div>
+    <div id="left-panel" style="width:9.9%; float:left;">
+    <span id="logo"></span>        
+        <ul style="margin:58px 0 0 10px; padding:2px 0;">
+            <li class="listHeading">Filter by Time</li> 
+            <li class="listItems"><a href="/apex/yahooRSSFeed?q={!rssQuery}&age=" id="anyTime">Any time</a></li>
+            <li class="listItems"><a href="/apex/yahooRSSFeed?age=1h&q={!rssQuery}" id="h1">Past hour</a></li>
+            <li class="listItems"><a href="/apex/yahooRSSFeed?age=1d&q={!rssQuery}" id="d1">Past day</a></li>
+            <li class="listItems"><a href="/apex/yahooRSSFeed?age=1w&q={!rssQuery}" id="w2">Past week</a></li>        
+        </ul>
+    </div>
+    <div id="results" style="width:90%; float:left; ">
+        <div id="feedTitleContainer" style="margin-left: 58px;">
+           <apex:inputText style="border-color: #929292 #D5D5D5 #D5D5D5 #929292;border-style: solid;border-width: 1px; height: 18px;
+                padding: 3px 10px;width: 534px;" value="{!rssQuery}"/> 
+           <apex:commandButton style="background: #FDCE3E;border: 1px solid #E5A716;color: #434343;height: 26px;margin-left: 7px;
+                padding: 0 23px;font-size: 15px; font-weight: bold;" action="{!getRSSFeed2}" value="Search" reRender="yahooFormId"/>          
+        </div>
+        <div id="web" style="border-left:solid 1px #ccc;">
+            <ol start="0">
+                <apex:repeat value="{!rssFeed.items}" var="n">
+                    <li>
+                        <div class="res">
+                            <div>
+                                <h3>
+                                    <a class="yschttl spt" href="{!n.link}">                                 
+                                        <apex:outputText value="{!n.title}" escape="false"/> 
+                                    </a>
+                                </h3>
+                            </div>
+                    
+                            <div class="abstr">
+                                <apex:outputText value="{!n.Description}" escape="false"/>
+                            </div>
+                    
+                            <span class="url">
+                                <apex:outputText value="{!n.source} {!n.pubDate}" escape="false"/>
+                            </span>
+                        </div>
+                    </li>
+                </apex:repeat>
+            </ol>    
+        </div>
+    </div>
+</div>
+<apex:outputPanel rendered="{!IF(OR(!recordNotFound, rssFeed.items == null, rssFeed.items.size == 0),true,false)}">
+    <ol start="0">
+        <li>
+            <p class="msg zrpmsg">We did not find results for: <b>{!rssQuery}</b> <strong> </strong>. Try the suggestions below or type a new query above.</p>      
+        </li>
+    </ol>
+</apex:outputPanel>
+</apex:form>
+</apex:page>

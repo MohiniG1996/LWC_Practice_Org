@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CheckDOB</fullName>
+    <active>true</active>
+    <errorConditionFormula>DOB__c  =TODAY() || DOB__c&gt;  TODAY()</errorConditionFormula>
+    <errorMessage>DOB can&apos; t be current date and the future date</errorMessage>
+</ValidationRule>

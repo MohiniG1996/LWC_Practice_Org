@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+   <isExposed>true</isExposed>
+     <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+        <targetConfigs>  
+        <targetConfig targets="lightning__HomePage,lightning__RecordPage">
+            <property name="pageSize" type="Integer" default="10" label="Enter the Page Size"/>
+            <property name="sortedDirection" type="String" default="asc" label="Enter the Sorting direction"/>
+            <property name="ComponentTitile" type="String" default="Search Tool" label="Enter the Component title"/>
+            <property name="objectName" type="String" default="Account" label="Enter the Object Name"/>
+            <property name="fieldNames" type="String" default="Id,Name,Phone,Type,Description,BillingStreet,BillingState,BillingCity,BillingCountry,Industry" label="Enter the fields Name"/>
+            <property name="RecordLimit" type="Integer" default="200" label="Enter the Record Size"/>
+            <property name="filterFieldName" type="String" default="BillingStreet" label="Enter the field Name for filtering the record"/>
+
+       </targetConfig>
+    </targetConfigs>
+
+</LightningComponentBundle>

@@ -1,0 +1,136 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container" title="Search Engine">
+                            <lightning-icon icon-name="standard:search" alternative-text="Search Icon" title="Search Icon"></lightning-icon>
+                            <span class="slds-assistive-text">Search Engine</span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Search Engine">Search Engine</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">search all functionality</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="slds-grid slds-gutters slds-m-top_x-large">
+            <div class="slds-col">
+                <input type="text" id="text-input-id-1" placeholder="Placeholder text…" class="slds-input" onchange={searchContact}/>
+            </div>
+            <div>
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                        <select class="slds-select" id="select-01">
+                            <option value="">Select…</option>
+                            <option>Account</option>
+                            <option>Contact</option>
+                            <option>Opportunity</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col">
+                <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+        <br></br>
+        
+        <template if:true={isVisible}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Account Name">Account Name</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Close Date">Close Date</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Stage">Stage</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Confidence">Confidence</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Amount">Amount</div>
+                    </th>
+                    <th class="" scope="col">
+                      <div class="slds-truncate" title="Contact">Contact</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="slds-hint-parent">
+                    <th data-label="Opportunity Name" scope="row">
+                      <div class="slds-truncate" title="Cloudhub">
+                        <a href="#" tabindex="-1">Cloudhub</a>
+                      </div>
+                    </th>
+                    <td data-label="Account Name">
+                      <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                    </td>
+                    <td data-label="Close Date">
+                      <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                    </td>
+                    <td data-label="Prospecting">
+                      <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                    </td>
+                    <td data-label="Confidence">
+                      <div class="slds-truncate" title="20%">20%</div>
+                    </td>
+                    <td data-label="Amount">
+                      <div class="slds-truncate" title="$25k">$25k</div>
+                    </td>
+                    <td data-label="Contact">
+                      <div class="slds-truncate" title="jrogers@cloudhub.com">
+                        <a href="#" tabindex="-1">jrogers@cloudhub.com</a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="slds-hint-parent">
+                    <th data-label="Opportunity Name" scope="row">
+                      <div class="slds-truncate" title="Cloudhub + Anypoint Connectors">
+                        <a href="#" tabindex="-1">Cloudhub + Anypoint Connectors</a>
+                      </div>
+                    </th>
+                    <td data-label="Account Name">
+                      <div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+                    </td>
+                    <td data-label="Close Date">
+                      <div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+                    </td>
+                    <td data-label="Prospecting">
+                      <div class="slds-truncate" title="Prospecting">Prospecting</div>
+                    </td>
+                    <td data-label="Confidence">
+                      <div class="slds-truncate" title="20%">20%</div>
+                    </td>
+                    <td data-label="Amount">
+                      <div class="slds-truncate" title="$25k">$25k</div>
+                    </td>
+                    <td data-label="Contact">
+                      <div class="slds-truncate" title="jrogers@cloudhub.com">
+                        <a href="#" tabindex="-1">jrogers@cloudhub.com</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+        </template>
+</template>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_IF_DOB_is_Valid</fullName>
+    <active>true</active>
+    <errorConditionFormula>DOB__c &gt;=   TODAY()</errorConditionFormula>
+    <errorMessage>Invalid DOB</errorMessage>
+</ValidationRule>

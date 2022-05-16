@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Calculator" icon-name="standard:formula">
+        <lightning-layout>
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-input type="number" label="First Number" name="firstNumber" onchange={onNumberChange}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout> 
+        <lightning-layout>
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-input type="number" label="Second Number" name="secondNumber" onchange={onNumberChange}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item padding="around-medium">
+                <lightning-button-group>
+                    <lightning-button label="Add" icon-name="utility:add" onclick={addHandler}></lightning-button>
+                    <lightning-button label="Subtract" icon-name="utility:dash" onclick={subtractHandler}></lightning-button>
+                    <lightning-button label="Multiplication" icon-name="utility:close" onclick={multiHandler}></lightning-button>
+                    <lightning-button label="Division" icon-name="utility:magicwand" onclick={divisionHandler}></lightning-button>
+                </lightning-button-group>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item padding="around-medium">
+                <lightning-formatted-text value={result}></lightning-formatted-text>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-input label="Show Previous Result" name="showPreviousResult" type="checkbox" onchange={showPreviousResult}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-medium">
+                <template if:true={showPreviousToggle}>
+                        <ul>
+                            <template iterator:result={previousResult}>
+                                <li key={result.value}>
+                                    <div if:true={result.first} class="slds-border_top"></div>
+                                    <lightning-formatted-text value={result.value}></lightning-formatted-text>
+                                    <div if:true={result.last} class="slds-border_bottom"></div>
+                                </li>
+                            </template>
+                        </ul>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

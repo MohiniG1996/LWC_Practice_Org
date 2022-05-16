@@ -1,0 +1,15 @@
+<template>
+    <template if:true={accList}>
+        <lightning-datatable
+        data={accList}
+        columns={columns}
+        key-field="id"
+        >
+        </lightning-datatable>
+
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+
+</template>

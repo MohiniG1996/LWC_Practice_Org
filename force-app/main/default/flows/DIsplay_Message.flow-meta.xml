@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>52.0</apiVersion>
+    <choices>
+        <name>India</name>
+        <choiceText>India</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>India</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>US</name>
+        <choiceText>US</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>US</stringValue>
+        </value>
+    </choices>
+    <dynamicChoiceSets>
+        <name>Picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Industry</picklistField>
+        <picklistObject>Account</picklistObject>
+        <sortOrder>Desc</sortOrder>
+    </dynamicChoiceSets>
+    <interviewLabel>DIsplay Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DIsplay Message</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>MessageDisplay</name>
+        <label>MessageDisplay</label>
+        <locationX>173</locationX>
+        <locationY>240</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>displayText</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 24px;&quot;&gt;Hello {!$User.FirstName} &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;font-size: 24px;&quot;&gt;Good Day!&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>MessageDisplay</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

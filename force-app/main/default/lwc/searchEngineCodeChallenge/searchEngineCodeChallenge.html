@@ -1,0 +1,71 @@
+<template>
+    
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col">
+            <div class="slds-page-header slds-theme_default">
+                <div class="slds-page-header__row">
+                    <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                            <div class="slds-media__figure slds-float_left">
+                                <span class ="slds-icon_container" title="Search Engine">
+                                    <lightning-icon icon-name="standard:search" alternative-text="Search Icon" title="Search Icon"></lightning-icon>
+                                    <span class="slds-assistive-text">Search Engine</span>
+                                </span>             
+                            </div>
+
+                            <div class="slds-media__body">
+                                <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                        <h1>
+                                            <span class="slds-page-header__title slds-truncate" title="Search Engine">Search Engine</span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <p class="slds-page-header__name-meta">search all functionality</p>
+                                <div class="slds-grid slds-gutters slds-align_absolute-center  slds-m-top_medium slds-m-left_xx-large">
+                                    <div class="slds-col">
+                                        <lightning-input type="search" onchange={handleKeyChangeEvent} class="slds-m-bottom_small" label="Search"></lightning-input>
+                        
+                                        <!--input type="text" id="text-input-id-1" placeholder="Placeholder text…" class="slds-input" onchange={handleKeyChangeEvent}/-->
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-button variant="brand" label="Search" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                                    </div>
+                                </div>    
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div class="slds-col">
+            <!--sorted-by = {sortedBy} sorted-direction = {sortedDirection}-->
+        </div>
+        <template if:true={isVisible}>
+        <div class="slds-col">
+                <c-custom-table search-text={searchKey} sorted-by = {sortedBy} sorted-direction = {sortedDirection}></c-custom-table>
+        </div>
+    </template>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</template>

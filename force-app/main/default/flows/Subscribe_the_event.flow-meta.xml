@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Rest_API_CAllout</name>
+        <label>Rest API CAllout</label>
+        <locationX>193</locationX>
+        <locationY>279</locationY>
+        <actionName>RestAPICallOut</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>appointmentDate</name>
+            <value>
+                <elementReference>$Record.Account_Description__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>smsBody</name>
+            <value>
+                <elementReference>$Record.Account_Name__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>toNumber</name>
+            <value>
+                <elementReference>$Record.Account_Description__c</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>52.0</apiVersion>
+    <interviewLabel>Subscribe the event {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Subscribe the event</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Rest_API_CAllout</targetReference>
+        </connector>
+        <object>Account_Event__e</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

@@ -1,0 +1,78 @@
+<template>
+    <lightning-card title={ComponentTitile}>
+        <div class="slds-m-around_medium">
+            <!--Search Input-->
+            <lightning-input 
+                type="search" 
+                onchange={handleKeyChange} 
+                class="slds-m-bottom_small"           
+                label="Search" 
+                value={searchKey}>
+            </lightning-input>
+            <!--Search Input End-->
+            <!--Data table with Pagination-->
+                <template if:true={isDataPresent}>
+                    <lightning-datatable 
+                        data-id="table" 
+                        key-field="Id" 
+                        data={data} 
+                        columns={columns}
+                        onsave={handleSave}
+                        draft-values={draftValues}
+                        sorted-by={sortedBy}
+                        sorted-direction={sortedDirection} 
+                        onsort={sortColumns}
+                        hide-checkbox-column 
+                        show-row-number-column>
+                    </lightning-datatable>
+                    </br>
+                    <lightning-layout horizontal-align="space">
+                        <lightning-layout-item flexibility="auto">
+                            <lightning-button 
+                                label="Previous" 
+                                icon-name="utility:chevronleft" 
+                                onclick={previousHandler}>
+                            </lightning-button>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto">
+                            Page {page} of {totalPage}
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto">
+                            <lightning-button 
+                                label="Next" 
+                                icon-name="utility:chevronright" 
+                                icon-position="right"
+                                onclick={nextHandler}>
+                            </lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            <!--Data table with Pagination End-->
+
+                <!--Desert Image when no data found-->
+                <template if:true={isShow}>
+                    <div class="slds-illustration slds-illustration_large" aria-hidden="true">
+                        <img src="/img/chatter/OpenRoad.svg" class="slds-illustration__svg" alt=""/>
+                        <div class="slds-text-color_weak">
+                            <h3 class="slds-text-heading_medium">No Data Found</h3>
+                        </div>
+                    </div>
+                </template>
+                <!--Desert Image End-->
+                <!-- Spinner-->
+                <template if:true={isLoading}>
+                    <div class="demo-only" style="height:6rem;position:relative">
+                        <div class="slds-spinner_container">
+                            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </div>    
+                </template>
+                <!--Spinner Ends-->
+        </div>
+    </lightning-card>
+
+</template>

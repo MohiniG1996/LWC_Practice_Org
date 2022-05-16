@@ -1,0 +1,13 @@
+<aura:component>
+    <lightning:tabset selectedTabId="two">
+        <lightning:tab label="Item One" id="1">
+            One Content !
+        </lightning:tab>
+        <lightning:tab label="Item Two" id="2">
+            Two Content !
+        </lightning:tab>
+        <lightning:tab label="Item Three" id="3">
+            Three Content !
+        </lightning:tab>
+    </lightning:tabset>
+</aura:component>

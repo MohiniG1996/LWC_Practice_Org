@@ -1,0 +1,35 @@
+<template>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning-card title="All Account">  
+                    <div class="slds-float_right">
+                        <lightning-button variant="brand" label="Merge Duplicate" title="Merge Duplicate" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                    <thead >
+                        <tr class="slds-line-height_reset">
+                         <th></th>   
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                        <template for:each={accList} for:item="acc">
+                            <tr key={acc.id}>
+                                <td key={acc.id}><lightning-input type="checkbox"   label="" onclick={handleChange} unchecked></lightning-input></td>
+                                <td key={acc.id}>{acc.Name}</td>
+                                <td key={acc.id}>{acc.Phone}</td>
+                                <td key={acc.id}>{acc.Rating}</td>
+                           </tr>
+                        </template>
+                        </tbody>
+                </table>
+            </lightning-card>
+            </div>
+
+        </div>
+             
+    
+    
+</template>

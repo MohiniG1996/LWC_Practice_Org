@@ -1,0 +1,57 @@
+<template>
+
+    <lightning-card>
+        <!-- Spinner-->
+        <template if:true={isLoading}>
+            <div class="demo-only" style="height:6rem;position:relative">
+                <div class="slds-spinner_container">
+                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                        <span class="slds-assistive-text">Loading</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </div>    
+        </template>
+
+        <template if:true={allRecord}>
+        <div class="slds-m-around_medium slds-box">
+                <lightning-datatable key-field="Id" 
+                data-id="table" 
+                data={allRecord} 
+                columns={columns} 
+                onsave={handleSaveForMultipleRecords}
+                draft-values={fldsItemValues} 
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection} 
+                hide-checkbox-column 
+                show-row-number-column>
+                </lightning-datatable>
+        </div>
+        </template>
+
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item flexibility="auto">
+                <lightning-button 
+                    label="Previous" 
+                    icon-name="utility:chevronleft" 
+                    onclick={previousHandler}>
+                </lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto">
+                Page {page} of {totalPage}
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto">
+                <lightning-button 
+                    label="Next" 
+                    icon-name="utility:chevronright" 
+                    icon-position="right"
+                    onclick={nextHandler}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+
+    </lightning-card>
+
+</template>

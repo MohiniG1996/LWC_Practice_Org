@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"    
+                controller="InlineEdittingController">    
+        
+    <aura:attribute type="object" name="acctList"/>    
+    <aura:attribute name="mycolumns" type="List"/>    
+        
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>    
+        
+    <lightning:datatable aura:id="acctTable"  
+                         data="{! v.acctList }"     
+                         columns="{! v.mycolumns }"     
+                         keyField="Id"    
+                         hideCheckboxColumn="false"  
+                         onsave="{! c.onSave }"/>    
+        
+</aura:component>

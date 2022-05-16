@@ -1,0 +1,6 @@
+<template>
+    <h1>Parent Component</h1>
+    <c-child-comp get-value-from-parent={value} getsearchvalue={handleSearchValue}></c-child-comp>
+    <lightning-button label="Invoke child method" onclick={callChildMethod}></lightning-button>
+    <p>{searchValue}</p>
+</template>
